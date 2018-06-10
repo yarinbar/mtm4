@@ -50,7 +50,7 @@ bool Player::fight(Player& player){
         return false;
 
     // if the weapon power is the same return false
-    if(player.weapon->getValue() == this->weapon->getValue())
+    if(player.weapon == this->weapon)
         return false;
 
 
@@ -99,13 +99,13 @@ ostream& operator<<(ostream& os, const Player& player){
     return os;
 }
 
-bool Player::operator<(const Player& player) const{
-    return strcmp(this->name, player.name) < 0;
+bool operator<(const Player& player1, const Player& player2){
+    return strcmp(player1.name, player2.name) < 0;
 }
 
 
-bool Player::operator>(const Player& player) const{
-    return strcmp(this->name, player.name) > 0;
+bool operator>(const Player& player1, const Player& player2){
+    return strcmp(player1.name, player2.name) > 0;
 }
 
 Player& Player::operator=(const Player& player){

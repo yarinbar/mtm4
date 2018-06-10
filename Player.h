@@ -75,8 +75,8 @@ public:
     bool weaponIsWeak(int weaponMinStrength) const;
     bool fight(Player& player);
 
-    bool operator<(const Player& player) const;
-    bool operator>(const Player& player) const;
+    friend bool operator<(const Player& player1, const Player& player2);
+    friend bool operator>(const Player& player1, const Player& player2);
     friend ostream& operator<<(ostream& os, const Player& player);
     Player& operator=(const Player& player);
 };
