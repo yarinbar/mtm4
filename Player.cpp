@@ -49,8 +49,8 @@ bool Player::fight(Player& player){
     if(player.position != this->position)
         return false;
 
-    // if the weapon power is the same return false
-    if(player.weapon == this->weapon)
+    // if the weapon value is the same return false
+    if(player.weapon->getValue() == this->weapon->getValue())
         return false;
 
 
@@ -58,7 +58,7 @@ bool Player::fight(Player& player){
     Target target;
     int damage = 0;
 
-    if(this->weapon > weapon){
+    if(this->weapon->getValue() > player.weapon->getValue()){
         target_player = &player;
         target = this->weapon->getTarget();
         damage = this->weapon->getHitStrength();
@@ -70,24 +70,21 @@ bool Player::fight(Player& player){
     }
 
     if(target == LIFE){
-        while(target_player->life > 0 && damage > 0){
-            target_player->life --;
-            damage--;
-        }
+        target_player->life -= damage;
+        if(target_player->life < 0)
+            target_player->life = 0;
     }
 
     if(target == LEVEL){
-        while(target_player->level > 0 && damage > 0){
-            target_player->level --;
-            damage--;
-        }
+        target_player->level -= damage;
+        if(target_player->level < 0)
+            target_player->level = 0;
     }
 
     if(target == STRENGTH){
-        while(target_player->strength > 0 && damage > 0){
-            target_player->strength --;
-            damage--;
-        }
+        target_player->strength -= damage;
+        if(target_player->strength < 0)
+            target_player->strength = 0;
     }
 
     return true;

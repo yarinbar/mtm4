@@ -42,7 +42,7 @@ private:
      * @param playerName - the name of the player to get
      * @return player by value
      */
-    Player getPlayer(const char* playerName) const;
+    Player* getPlayer(const char* playerName) const;
 
     /**
      * removes a given player from the game

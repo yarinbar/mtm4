@@ -43,15 +43,15 @@ bool Game::isGameFull() const{
     return currentPlayers == maxPlayers;
 }
 
-Player Game::getPlayer(const char* playerName) const{
+Player* Game::getPlayer(const char* playerName) const{
 
     for(int i = 0; i < currentPlayers; i++){
         if(players[i]->isPlayer(playerName))
-            return *players[i];
+            return players[i];
     }
 
     //will not get here
-    return *players[0];
+    return players[0];
 }
 
 void Game::removePlayer(const char* playerName){
@@ -189,15 +189,15 @@ GameStatus Game::fight(const char* playerName1, const char* playerName2){
     if(!isPlayerExist(playerName1) || !isPlayerExist(playerName2))
         return NAME_DOES_NOT_EXIST;
 
-    Player player1 = getPlayer(playerName1);
-    Player player2 = getPlayer(playerName2);
+    Player* player1 = getPlayer(playerName1);
+    Player* player2 = getPlayer(playerName2);
 
-    if(!player1.fight(player2))
+    if(!player1->fight(*player2))
         return FIGHT_FAILED;
 
-    if(!player1.isAlive())
+    if(!player1->isAlive())
         removePlayer(playerName1);
-    if(!player2.isAlive())
+    if(!player2->isAlive())
         removePlayer(playerName2);
 
     return SUCCESS;
