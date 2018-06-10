@@ -108,6 +108,7 @@ public:
      *        ostream - any output stream
      * @return an ostream object
      */
+    friend ostream& operator<<(ostream& os, const Player& player);
 
     /**
      * override of < operator
@@ -126,7 +127,6 @@ public:
      *         given's, otherwise false
      */
     friend bool operator>(const Player& player1, const Player& player2);
-    friend ostream& operator<<(ostream& os, const Player& player);
 
     /**
      * override of assignment operator

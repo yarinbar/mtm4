@@ -113,7 +113,7 @@ public:
  * @param weapon2 - the second weapon
  * @return true if the weapons are not equal, otherwise false
  */
-bool operator!=(const Weapon& weapon1, const Weapon& weapon2) const;
+bool operator!=(const Weapon& weapon1, const Weapon& weapon2);
 
 
 /**
@@ -123,7 +123,7 @@ bool operator!=(const Weapon& weapon1, const Weapon& weapon2) const;
  * @return true if the first weapon's value is bigger then the second's,
  *         otherwise false
  */
-bool operator>(const Weapon& weapon1, const Weapon& weapon2) const;
+bool operator>(const Weapon& weapon1, const Weapon& weapon2);
 
 
 
