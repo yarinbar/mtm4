@@ -156,6 +156,7 @@ void Test(){
 int main() {
 
     Test();
+    cout << "Finish";
     return 0;
 
 }
