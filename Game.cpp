@@ -73,7 +73,8 @@ void Game::removePlayer(const char* playerName){
 GameStatus Game::addPlayer(const char* playerName, const char* weaponName,
                            Target target, int hitStrength){
 
-    if(target < 0 || target > 3 || hitStrength < 0)
+    if((target != LEVEL && target != STRENGTH && target != LIFE)
+       || hitStrength < 0)
         return INVALID_PARAM;
 
     if(isPlayerExist(playerName))
