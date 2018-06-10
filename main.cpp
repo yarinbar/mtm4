@@ -26,5 +26,12 @@ void simpleTest() {
 
 
 int main() {
-    simpleTest();
+    //simpleTest();
+    Game game = Game(5);
+    game.addPlayer("Linoy", "lazer gun", LEVEL, 5);
+    game.addPlayer("Denis", "light saver", LIFE, 7);
+    game.addPlayer("Gal", "pirate sword", STRENGTH, 6);
+    Game game2(2);
+    game2 = game;
+    cout << game2;
 }

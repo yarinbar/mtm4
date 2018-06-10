@@ -51,7 +51,7 @@ private:
     void removePlayer(const char* playerName);
 
 public:
-    //defualt Constructor
+    // Constructor
     explicit Game(int maxPlayers):
                     maxPlayers(maxPlayers),
                     players(new Player*[maxPlayers]()),
@@ -60,12 +60,24 @@ public:
 
     }
 
-    //defualt Desstructor
+    // Destructor
     ~Game(){
         for(int i = 0; i < currentPlayers; i++){
             delete players[i];
         }
         delete[] players;
+    }
+
+    // Copy Constructor
+    Game(const Game& game):
+            maxPlayers(game.maxPlayers),
+            players(new Player*[game.maxPlayers]()),
+            currentPlayers(game.currentPlayers){
+
+        for(int i = 0; i < currentPlayers; i++){
+            players[i] = new Player(*game.players[i]);
+        }
+
     }
 
     /**
@@ -146,6 +158,8 @@ public:
      * @return an ostream object
      */
     friend ostream& operator<<(ostream&, const Game&);
+
+    Game& operator=(const Game& game);
 
 };
 

@@ -25,8 +25,6 @@ private:
     int hitStrength;
 
 public:
-    Weapon() = default; // default generated Constructor
-
     // Constructor
     Weapon(const char* name, Target target, int hitStrength):
             name(new char [strlen(name) + 1]),
@@ -85,11 +83,21 @@ public:
     Weapon& operator=(const Weapon& weapon);
 
     /**
-     *
-     * @param weapon
-     * @return
+     * override of < operator
+     * @param weapon1 - the first weapon
+     * @param weapon2 - the second weapon
+     * @return true if the first weapon's value is smaller then the second's,
+     *         otherwise false
      */
     bool operator<(const Weapon& weapon) const;
+
+    /**
+  * override of > operator
+  * @param weapon1 - the first weapon
+  * @param weapon2 - the second weapon
+  * @return true if the first weapon's value is bigger then the second's,
+  *         otherwise false
+  */
     bool operator>(const Weapon& weapon) const;
 };
 

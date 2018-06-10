@@ -22,8 +22,7 @@ class Player{
     int position;
     
 public:
-    Player() = default;
-
+    // Constructor
     Player(const char* name, const Weapon& weapon):
             name(new char [strlen(name) + 1]), // +1 for 0 terminator
             level(1),
@@ -36,11 +35,13 @@ public:
 
     }
 
+    // Destructor
     ~Player(){
         delete[] this->name;
         delete this->weapon;
     }
 
+    // Copy Constructor
     Player(const Player& player):
             name(new char [strlen(player.name) + 1]),
             level(player.level),
@@ -52,8 +53,21 @@ public:
         strcpy(this->name, player.name);
     }
 
+    /**
+     * increase the player level by 1
+     */
     void nextLevel();
+
+    /**
+     * increase the player step by 1
+     */
     void makeStep();
+
+    /**
+     * checks if playerName is this player's name
+     * @param playerName - the name to check
+     * @return true if this is the player's name, otherwise false
+     */
     bool isPlayer(const char* playerName) const;
     void addLife();
     void addStrength(int strengthToAdd);

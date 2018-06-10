@@ -213,3 +213,25 @@ ostream& operator<<(ostream& os,const Game& game){
     delete[] temp_players;
     return os;
 }
+
+
+Game& Game::operator=(const Game& game){
+    if(this == &game)
+        return *this;
+
+    for(int i = 0; i < this->currentPlayers; i++){
+        delete this->players[i];
+    }
+    delete[] this->players;
+
+    this->maxPlayers = game.maxPlayers;
+    this->currentPlayers = game.currentPlayers;
+
+
+    this->players = new Player*[maxPlayers]();
+    for(int i = 0; i < this->currentPlayers; i++){
+        this->players[i] = new Player(*game.players[i]);
+    }
+
+    return *this;
+}
