@@ -213,7 +213,7 @@ ostream& operator<<(ostream& os,const Game& game){
     maxSort(temp_players, game.currentPlayers);
 
     for(int i = 0; i < game.currentPlayers; i++){
-        cout << "player " << i << ": " << *temp_players[i] << "}," << endl;
+        os << "player " << i << ": " << *temp_players[i] << "}," << endl;
     }
 
     delete[] temp_players;

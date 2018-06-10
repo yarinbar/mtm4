@@ -155,8 +155,18 @@ void Test(){
 
 int main() {
 
-    Test();
-    cout << "Finish";
+   // Test();
+   // cout << "Finish";
+
+    Weapon w1("gun",STRENGTH,10);
+    Weapon w2("knife",LEVEL,20);
+
+   // Player p1("rotem",w1);
+    //Player p2("yarin",w2);
+
+    cout << (w1 != w2) << endl;
+
+
     return 0;
 
 }
