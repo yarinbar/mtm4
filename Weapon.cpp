@@ -50,13 +50,13 @@ bool operator==(const Weapon& weapon1, const Weapon& weapon2){
 }
 
 bool operator!=(const Weapon& weapon1, const Weapon& weapon2){
-    return weapon1.getValue() != weapon2.getValue();
+    return !(weapon1.getValue() == weapon2.getValue());
 }
 
-bool Weapon::operator<(const Weapon& weapon) const{
-    return this->getValue() < weapon.getValue();
+bool operator<(const Weapon& weapon1, const Weapon& weapon2){
+    return weapon1.getValue() < weapon2.getValue();
 }
 
-bool Weapon::operator>(const Weapon& weapon) const{
-    return this->getValue() > weapon.getValue();
+bool operator>(const Weapon& weapon1, const Weapon& weapon2){
+    return !(weapon1.getValue() < weapon2.getValue()) && !(weapon1.getValue() == weapon2.getValue()) ;
 }

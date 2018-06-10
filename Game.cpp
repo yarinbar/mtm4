@@ -57,6 +57,8 @@ Player Game::getPlayer(const char* playerName) const{
 void Game::removePlayer(const char* playerName){
 
     for(int i = 0; i < currentPlayers; i++){
+        // if this is the player to delete, delete it and move the last player
+        // to his place instead
         if(players[i]->isPlayer(playerName)){
             delete players[i];
             players[i] = players[currentPlayers - 1];
@@ -155,25 +157,28 @@ GameStatus Game::addStrength(const char * playerName, int strengthToAdd) const{
 bool Game::removeAllPlayersWithWeakWeapon(int weaponStrength){
     bool isRemoved = false;
     int numCurrentPlayers = currentPlayers;
-    Player** temp_players = new Player*[maxPlayers](); // defragged array
+    Player** temp_players = new Player*[maxPlayers]();
     for(int i = 0, j = 0; i < numCurrentPlayers; i++){
         if(players[i]->weaponIsWeak(weaponStrength)){
-            delete (players[i]);
+            delete players[i];
             this->currentPlayers--;
             isRemoved = true;
         }
-        else{ //maintain defragged array
+        else{
+            //if we don't want to delete this player, save it in the temp array
             temp_players[j] = players[i];
             j++;
         }
     }
 
-    //defrag players array
+    //if we removed some players
     if(isRemoved){
+        //replace the game player array (after deletions) with the temp array
         delete[] this->players;
         this->players = temp_players;
     }
     else{
+        //if we didn't removed any player just delete the temp array
         delete[] temp_players;
     }
     return isRemoved;
