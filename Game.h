@@ -159,6 +159,11 @@ public:
      */
     friend ostream& operator<<(ostream&, const Game&);
 
+    /**
+     * override of assignment operator
+     * @param game - the new game to copy to this game
+     * @return reference to this game
+     */
     Game& operator=(const Game& game);
 
 };

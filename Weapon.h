@@ -82,33 +82,29 @@ public:
      */
     Weapon& operator=(const Weapon& weapon);
 
+
     /**
-     * override of < operator
+     * override of == operator
+     * symmetric operator
+     * @param weapon1 - the first weapon
+     * @param weapon2 - the second weapon
+     * @return true if the weapons are equal, otherwise false
+     */
+    friend bool operator==(const Weapon& weapon1, const Weapon& weapon2);
+
+    /**
+     * override of > operator
      * @param weapon1 - the first weapon
      * @param weapon2 - the second weapon
      * @return true if the first weapon's value is smaller then the second's,
      *         otherwise false
      */
-    bool operator<(const Weapon& weapon) const;
+    friend bool operator<(const Weapon& weapon1, const Weapon& weapon2);
 
-    /**
-  * override of > operator
-  * @param weapon1 - the first weapon
-  * @param weapon2 - the second weapon
-  * @return true if the first weapon's value is bigger then the second's,
-  *         otherwise false
-  */
-    bool operator>(const Weapon& weapon) const;
+
 };
 
-/**
- * override of == operator
- * symmetric operator
- * @param weapon1 - the first weapon
- * @param weapon2 - the second weapon
- * @return true if the weapons are equal, otherwise false
- */
-bool operator==(const Weapon& weapon1, const Weapon& weapon2);
+
 
 /**
  * override of != operator
@@ -117,10 +113,17 @@ bool operator==(const Weapon& weapon1, const Weapon& weapon2);
  * @param weapon2 - the second weapon
  * @return true if the weapons are not equal, otherwise false
  */
-bool operator!=(const Weapon& weapon1, const Weapon& weapon2);
+bool operator!=(const Weapon& weapon1, const Weapon& weapon2) const;
 
 
-
+/**
+ * override of > operator
+ * @param weapon1 - the first weapon
+ * @param weapon2 - the second weapon
+ * @return true if the first weapon's value is bigger then the second's,
+ *         otherwise false
+ */
+bool operator>(const Weapon& weapon1, const Weapon& weapon2) const;
 
 
 
